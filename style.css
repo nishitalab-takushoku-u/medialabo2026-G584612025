@@ -1,0 +1,12 @@
+h1{
+    color: white;
+    background: rgb(142, 29, 142);
+}
+
+h2 {
+    color: white;
+    background: linear-gradient(0.25turn, rgb(81, 59, 204), white);
+}
+a:hover {
+    color: green;
+}
