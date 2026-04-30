@@ -7,6 +7,15 @@ h2 {
     color: white;
     background: linear-gradient(0.25turn, rgb(81, 59, 204), white);
 }
+
+h3 {
+    font-family: serif;
+    color: rgb(95, 25, 95)
+}
+
+a:visited{
+    color:rgb(39, 205, 205);
+}
 a:hover {
     color: green;
 }
