@@ -8,8 +8,9 @@ function plus() {
   let b = Number(y);
 
   let sum = a + b;
-  let p = document.querySelector('id#answer');
-  p.textContent = console.log(sum);
+
+  let p = document.querySelector('span#answer');
+  p.textContent = sum;
 } 
 
 let c = document.querySelector('button#calc');
