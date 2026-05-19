@@ -13,6 +13,17 @@ function print(data) {
   console.log("都市名:"+data.name);
 }
 
+//課題4-1
+let s1 = document.querySelector('input[name="s"]');
+let s2 = document.querySelector('button#s');
+
+s2.addEventListener('click', search);
+
+function search() {
+  let key = s1.value;
+  console.log("検索キー:"+key);
+}
+
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
 
