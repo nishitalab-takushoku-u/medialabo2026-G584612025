@@ -26,7 +26,45 @@ function search() {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let d = document.createElement('div');
+  d.id = 'result';
+  let b = document.querySelector('body');
+  b.insertAdjacentElement('beforeend', d);
+  
+  u = document.createElement('ul');
+  l = document.createElement('li');
+  l.textContent = "経度:"+data.coord.lon;
+  u.insertAdjacentElement('beforeend', l);
 
+  l = document.createElement('li');
+  l.textContent = "緯度:"+data.coord.lat;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
+  l.textContent = "天気:"+data.weather[0].description;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
+  l.textContent = "最低気温:"+data.main.temp_min;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
+  l.textContent = "最高気温:"+data.main.temp_max;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
+  l.textContent = "湿度:"+data.main.humidity;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
+  l.textContent = "風速:"+data.wind.speed;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
+  l.textContent = "都市名:"+data.name;
+  u.insertAdjacentElement('beforeend', l);
+
+  d.insertAdjacentElement('beforeend', u);
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
