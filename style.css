@@ -1,11 +1,11 @@
 h1{
     color: white;
-    background: rgb(142, 29, 142);
+    background: rgb(135, 24, 204);
 }
 
 h2 {
     color: white;
-    background: linear-gradient(0.25turn, rgb(81, 59, 204), white);
+    background: linear-gradient(0.25turn, rgb(150, 72, 218), white);
 }
 
 h3 {

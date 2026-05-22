@@ -24,12 +24,12 @@ function show(){
     p.insertAdjacentElement('afterend', l);
   
 	let u = document.createElement('ul');
-	let l = document.createElement('li');
 	for (let n of gakka) {
+		let l = document.createElement('li');
         l.textContent = n.name;
 		u.insertAdjacentElement('beforeend', l);
     } 
-	let p = document.querySelector('h2#dept');
+	p = document.querySelector('h2#dept');
 	p.insertAdjacentElement('afterend', u);
 }
 
