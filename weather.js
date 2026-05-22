@@ -28,11 +28,26 @@ function search() {
 function printDom(data) {
   let d = document.createElement('div');
   d.id = 'result';
+  d.classList.add('multi-bg-example');
+
   let b = document.querySelector('body');
   b.insertAdjacentElement('beforeend', d);
+
+  let h1 = document.createElement('h1');
+  h1.textContent = '世界の天気 (検索結果1件)';
+  d.insertAdjacentElement('beforeend', h1);
+
+  let h2 = document.createElement('h2');
+  h2.textContent = '以下の地域の天候に関する情報を検索して表示します';
+  d.insertAdjacentElement('beforeend', h2);
+
+  let img = document.createElement('img');
+  img.classList.add('sign');
+  img.src = 'https://kansuuya.net/weather/image/%E6%9B%87.png';
+  d.insertAdjacentElement('beforeend', img);
   
-  u = document.createElement('ul');
-  l = document.createElement('li');
+  let u = document.createElement('ul');
+  let l = document.createElement('li');
   l.textContent = "経度:"+data.coord.lon;
   u.insertAdjacentElement('beforeend', l);
 
