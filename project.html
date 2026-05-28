@@ -5,13 +5,26 @@
     <meta charset="utf-8">
     <title>My test page</title>
     <link rel="stylesheet"   href="project.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
     <script src="weather.js" defer></script>
   </head>
   <body>
-    <div>
     <label for="s">検索キー：</label>
-    <input type="search" name="s">
-    <button id="s">検索</button>
+    <select name ="city" id="city">
+        <option value="Cairo">カイロ (エジプト)</option>
+        <option value="Moscow">モスクワ (ロシア)</option>
+        <option value="Johannesburg">ヨハネスブルク (南アフリカ)</option>
+        <option value="Beijing">北京 (中華人民共和国)</option>
+        <option value="Tokyo">東京 (日本)</option>
+        <option value="Singapore">シンガポール</option>
+        <option value="Sydney">シドニー (オーストラリア)</option>
+        <option value="London">ロンドン (イギリス)</option>
+        <option value="Paris">パリ (フランス)</option>
+        <option value="Rio de Janeiro">リオデジャネイロ (ブラジル)</option>
+        <option value="New York">ニューヨーク (アメリカ合衆国)</option>
+        <option value="Los Angeles">ロサンゼルス (アメリカ合衆国)</option>
+  </select>
+    <button id="sendRequest">検索</button>
     </div>
   </body>
 </html>

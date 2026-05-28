@@ -13,21 +13,14 @@ function print(data) {
   console.log("都市名:"+data.name);
 }
 
-//課題4-1
-let s1 = document.querySelector('input[name="s"]');
-let s2 = document.querySelector('button#s');
-
-s2.addEventListener('click', search);
-
-function search() {
-  let key = s1.value;
-  console.log("検索キー:"+key);
-}
-
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  if(document.querySelector('div#result') !== null){
+    document.querySelector('div#result').remove();
+  }
   let d = document.createElement('div');
   d.id = 'result';
+  
   d.classList.add('multi-bg-example');
 
   let b = document.querySelector('body');
@@ -40,11 +33,6 @@ function printDom(data) {
   let h2 = document.createElement('h2');
   h2.textContent = '以下の地域の天候に関する情報を検索して表示します';
   d.insertAdjacentElement('beforeend', h2);
-
-  let img = document.createElement('img');
-  img.classList.add('sign');
-  img.src = 'https://kansuuya.net/weather/image/%E6%9B%87.png';
-  d.insertAdjacentElement('beforeend', img);
   
   let u = document.createElement('ul');
   let l = document.createElement('li');
@@ -76,6 +64,10 @@ function printDom(data) {
   u.insertAdjacentElement('beforeend', l);
 
   l = document.createElement('li');
+  l.textContent = "風向:"+data.wind.deg;
+  u.insertAdjacentElement('beforeend', l);
+
+  l = document.createElement('li');
   l.textContent = "都市名:"+data.name;
   u.insertAdjacentElement('beforeend', l);
 
@@ -83,18 +75,57 @@ function printDom(data) {
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
-
-
+let b = document.querySelector('#sendRequest');
+b.addEventListener('click', sendRequest);
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+    let s = document.querySelector('select#city');
+    let idx = s.selectedIndex;
+    let os = s.querySelectorAll('option');
+    let o = os.item(idx);
 
+    let genre;
+    if (idx === 0) {genre = '360630'};
+    if (idx === 1) {genre = '524901'};
+    if (idx === 2) {genre = '993800'};
+    if (idx === 3) {genre = '1816670'};
+    if (idx === 4) {genre = '1850147'};
+    if (idx === 5) {genre = '1880252'};
+    if (idx === 6) {genre = '2147714'};
+    if (idx === 7) {genre = '2643743'};
+    if (idx === 8) {genre = '2968815'};
+    if (idx === 9) {genre = '3451189'};
+    if (idx === 10){genre = '5128581'};
+    if (idx === 11){genre = '5368361'};
+
+    let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/'+ genre + '.json';
+    
+    // 通信開始
+    axios.get(url)
+        .then(showResult)   // 通信成功
+        .catch(showError)   // 通信失敗
+        .then(finish);      // 通信の最後の処理
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
+    // サーバから送られてきたデータを出力
+    let data = resp.data;
 
+    // data が文字列型なら，オブジェクトに変換する
+    if (typeof data === 'string') {
+        data = JSON.parse(data);
+    }
+
+    // data をコンソールに出力
+    console.log(data);
+
+    // data.x を出力
+    console.log(data.x);
+
+    console.log(printDom(data));
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
@@ -111,50 +142,4 @@ function finish() {
 // 以下はグルメのデータサンプル
 // 注意: 第5回までは以下を変更しないこと！
 // 注意2: 課題6-1 で以下をすべて削除すること
-let data = {
-  "coord": {
-    "lon": 116.3972,
-    "lat": 39.9075
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "曇りがち",
-      "icon": "04d"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 9.94,
-    "feels_like": 8.65,
-    "temp_min": 9.94,
-    "temp_max": 9.94,
-    "pressure": 1022,
-    "humidity": 14,
-    "sea_level": 1022,
-    "grnd_level": 1016
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 2.65,
-    "deg": 197,
-    "gust": 4.84
-  },
-  "clouds": {
-    "all": 53
-  },
-  "dt": 1646542386,
-  "sys": {
-    "type": 1,
-    "id": 9609,
-    "country": "CN",
-    "sunrise": 1646520066,
-    "sunset": 1646561447
-  },
-  "timezone": 28800,
-  "id": 1816670,
-  "name": "北京市",
-  "cod": 200
-};
 
